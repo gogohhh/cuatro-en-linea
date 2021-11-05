@@ -2,7 +2,7 @@
 
 body {
   font-family: 'Lucida Sans Unicode';
-  background-color: #f7a72f;
+  background-color: #2ff7ed;
 }
 
 h2 {
@@ -22,7 +22,7 @@ table {
 .cell {
   height: 70px;
   width: 70px;
-  background-color: #1990ff;
+  background-color: none;
   display: flex;
   flex-direction: row;
   justify-content: center;

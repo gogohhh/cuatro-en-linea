@@ -45,12 +45,6 @@ class App extends Component {
 
   juega(c){
     if(!this.state.finJuego){     //Si el estado del finjuego es verdadero
-      
-      // check status of the board
-      let status = this.comprobarGanador();
-      if(status === this.state.jugador1){
-        this.setState( {board, finJuego: true});
-      }
 
       let board = this.state.board;
       for (let r = 5; r >= 0; r--) {
@@ -59,7 +53,13 @@ class App extends Component {
           break;
         }
       }
+      
+      let status = this.comprobarGanador();
+      if(status === this.state.jugador1){
+        this.setState( {board, finJuego: true});
+      }
 
+  
       this.setState({  tiroActual: this.turnoJugador() }); // seteamos el estado anterior en una nueva funcion 
     }
   }
@@ -76,9 +76,42 @@ class App extends Component {
     } 
   }
 
+  // Comprobar ganador en horizontalmente
+  checkHorizontal(board) {
+    for (let r = 0; r < 6; r++) {
+      for (let c = 0; c < 4; c++) {
+        if (board[r][c] && board[r][c] === board[r][c+1] && board[r][c] === board[r][c+2] && board[r][c] === board[r][c+3]) {
+          return board[r][c];
+        }
+      }
+    }
+  }
+
+  // comprobar ganador en diagonal
+  checkDiagonal(board) {
+    for (let r = 0; r < 3; r++) {
+      for (let c = 0; c < 4; c++) {
+        if (board[r][c] && board[r][c] === board[r+1][c+1] && 
+            board[r][c] === board[r+2][c+2] && 
+            board[r][c] === board[r+3][c+3]) 
+          {
+          return board[r][c];
+        }
+      }
+    }
+    for (let r = 0; r < 3; r++) {
+      for (let c = 3; c < 7; c++) {
+        if (board[r][c] && board[r][c] === board[r+1][c-1] && board[r][c] === board[r+2][c-2] && board[r][c] === board[r+3][c-3]) {
+          return board[r][c];
+        }
+      }
+    }
+  }
+
+
   // Return checkVertical in a new funtion
-  comprobarGanador() {
-    return this.checkVertical(this.state.board);
+  comprobarGanador(board) {
+    return this.checkVertical(this.state.board) || this.checkHorizontal(this.state.board) || this.checkDiagonal(this.state.board);
   }
 
 

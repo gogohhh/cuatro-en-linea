@@ -89,3 +89,8 @@ table {
   text-align: center;
   margin-left: 30%;
 }
+
+.score{
+  position: absolute;
+  padding-left: 50px;
+}

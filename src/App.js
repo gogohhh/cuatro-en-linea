@@ -12,7 +12,9 @@ class App extends Component {
       tiroActual: null, /** currentPlayer */
       board: [],
       finJuego: false,
-      mensaje: ''
+      mensaje: '',
+      score: 0,
+      score2: 0
     };
 
     this.juega = this.juega.bind(this);
@@ -35,7 +37,9 @@ class App extends Component {
       board,
       tiroActual: this.state.jugador1,
       finJuego: false,
-      mensaje: ''
+      mensaje: '',
+      score: 0,
+      score2: 0
     });
   }
 
@@ -58,9 +62,12 @@ class App extends Component {
 
       let status = this.comprobarGanador();
       if(status === this.state.jugador1){
-        this.setState( {board, finJuego: true, mensaje: 'Ganador jugador 1 (rojo)'} );
+        this.setState( {board, finJuego: true, mensaje: 'Ganador jugador 1 (rojo)', // counter to state score
+          score: this.state.score + 1,
+      } );
       } else if (status === this.state.jugador2) {
-        this.setState( {board, finJuego: true, mensaje: 'Ganador jugador 2 (amarillo)'} );
+        this.setState( {board, finJuego: true, mensaje: 'Ganador jugador 2 (amarillo)', score2: this.state.score2 + 1,
+      } );
       }
       else{
         this.setState( {board, tiroActual: this.turnoJugador()});
@@ -133,6 +140,11 @@ class App extends Component {
       <div>
         <h2>Juego Conecta 4</h2>
         <div className="button" onClick={() => {this.iniciarBoard()}}>Nuevo juego</div>
+
+        <div className="score">
+          <p>Jugador 1: <span>{this.state.score}</span></p>
+          <p>Jugador 2: <span>{this.state.score2}</span></p>
+        </div>
 
         <table>
           <thead>

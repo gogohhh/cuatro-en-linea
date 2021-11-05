@@ -53,10 +53,15 @@ class App extends Component {
           break;
         }
       }
-      
+
       let status = this.comprobarGanador();
       if(status === this.state.jugador1){
         this.setState( {board, finJuego: true});
+      } else if (status === this.state.jugador2) {
+        this.setState( {board, finJuego: true});
+      }
+      else{
+        this.setState( {board, tiroActual: this.turnoJugador()});
       }
 
   

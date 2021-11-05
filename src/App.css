@@ -78,3 +78,14 @@ table {
   color: #43f120;
   transition: background-color 0.5s, color 0.5s;
 }
+
+.mensaje{
+  background-color: #1ff53c;
+  color: #000;
+  font-family: 'Arial';
+  text-align: center;
+  font-size: 17px;
+  width: 40%;
+  text-align: center;
+  margin-left: 30%;
+}

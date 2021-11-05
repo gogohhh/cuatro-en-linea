@@ -11,7 +11,8 @@ class App extends Component {
       jugador2: 2,
       tiroActual: null, /** currentPlayer */
       board: [],
-      finJuego: false
+      finJuego: false,
+      mensaje: ''
     };
 
     this.juega = this.juega.bind(this);
@@ -33,7 +34,8 @@ class App extends Component {
     this.setState({
       board,
       tiroActual: this.state.jugador1,
-      finJuego: false
+      finJuego: false,
+      mensaje: ''
     });
   }
 
@@ -56,9 +58,9 @@ class App extends Component {
 
       let status = this.comprobarGanador();
       if(status === this.state.jugador1){
-        this.setState( {board, finJuego: true});
+        this.setState( {board, finJuego: true, mensaje: 'Ganador jugador 1 (rojo)'} );
       } else if (status === this.state.jugador2) {
-        this.setState( {board, finJuego: true});
+        this.setState( {board, finJuego: true, mensaje: 'Ganador jugador 2 (amarillo)'} );
       }
       else{
         this.setState( {board, tiroActual: this.turnoJugador()});
@@ -140,6 +142,10 @@ class App extends Component {
             {this.state.board.map((row, i) => (<Row key={i} row={row} index={this.juega} />) )}
           </tbody>
         </table>
+
+        <div>
+         <h5 class="mensaje">{this.state.mensaje}</h5> 
+        </div>
         
       </div>
     );

@@ -1,6 +1,7 @@
 import './App.css';
 import React, { Component } from 'react';
 import Row from './Row';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +10,8 @@ class App extends Component {
       jugador1: 1,
       jugador2: 2,
       tiroActual: null, /** currentPlayer */
-      board: []
+      board: [],
+      finJuego: false
     };
 
     this.juega = this.juega.bind(this);
@@ -25,11 +27,13 @@ class App extends Component {
       for (let c = 0; c < 7; c++) {  //recorre las columnas a 7 columnas
         row.push(null) 
       }
+      board.push(row); //agrega las filas al board
     }
 
     this.setState({
       board,
-      tiroActual: this.state.jugador1
+      tiroActual: this.state.jugador1,
+      finJuego: false
     });
   }
 
@@ -40,15 +44,43 @@ class App extends Component {
   }
 
   juega(c){
-    let board = this.state.board;
+    if(!this.state.finJuego){     //Si el estado del finjuego es verdadero
+      
+      // check status of the board
+      let status = this.comprobarGanador();
+      if(status === this.state.jugador1){
+        this.setState( {board, finJuego: true});
+      }
+
+      let board = this.state.board;
       for (let r = 5; r >= 0; r--) {
         if (!board[r][c]) {
           board[r][c] = this.state.tiroActual;
           break;
         }
       }
-    this.setState({  tiroActual: this.turnoJugador() }); /* seteamos el estado anterior en una nueva funcion */
+
+      this.setState({  tiroActual: this.turnoJugador() }); // seteamos el estado anterior en una nueva funcion 
+    }
   }
+
+  // Comprobar ganador en verticalmente 
+  checkVertical(board) {
+    // Comprobar que row sea mayor a 3
+    for (let r = 3; r < 6; r++) {
+      for (let c = 0; c < 7; c++) {
+        if (board[r][c] && board[r][c] === board[r-1][c] && board[r][c] === board[r-2][c] && board[r][c] === board[r-3][c]) {
+          return board[r][c];
+        }
+      }
+    } 
+  }
+
+  // Return checkVertical in a new funtion
+  comprobarGanador() {
+    return this.checkVertical(this.state.board);
+  }
+
 
   componentWillMount() {
     this.iniciarBoard();

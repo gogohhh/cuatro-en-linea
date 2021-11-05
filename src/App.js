@@ -1,7 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
 import Row from './Row';
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -12,8 +11,22 @@ class App extends Component {
       tiroActual: null,
       board: []
     };
-    
-    
+  } /** final del constructor */
+
+  initBoard() {
+    // Creamos una matriz de 6x7 para el board
+    let board = [];
+
+    for (let r = 0; r < 6; r++) { //recore las filas a 6 filas
+      let row = [];
+      for (let c = 0; c < 7; c++) {  //recorre las columnas a 7 columnas
+        row.push(null) 
+      }
+    }
+
+    this.setState({
+      board
+    });
   }
   
 
@@ -27,7 +40,8 @@ class App extends Component {
           <thead>
           </thead>
           <tbody>
-            
+            {/* Recorremos el array row */}
+            {this.state.board.map((row, i) => (<Row key={i} row={row} index={this.index} />) )}
           </tbody>
         </table>
         

@@ -25,8 +25,18 @@ class App extends Component {
     }
 
     this.setState({
-      board
+      board,
+      tiroActual: this.state.jugador1
     });
+  }
+
+  turnoJugador() {
+    return (this.state.tiroActual === this.state.jugador1) ? this.state.jugador2 : this.state.jugador1;
+    {/* el estado del jugador en turno es el estado del tiro actual */}
+  }
+
+  juega(c){
+    this.setState({  tiroActual: this.turnoJugador() }); {/* seteamos el estado anterior en una nueva funcion */}
   }
 
   componentWillMount() {

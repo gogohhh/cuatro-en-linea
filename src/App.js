@@ -13,7 +13,7 @@ class App extends Component {
     };
   } /** final del constructor */
 
-  initBoard() {
+  Board() {
     // Creamos una matriz de 6x7 para el board
     let board = [];
 
@@ -28,6 +28,10 @@ class App extends Component {
       board
     });
   }
+
+  componentWillMount() {
+    this.Board();
+  }
   
 
   render() {
@@ -35,7 +39,8 @@ class App extends Component {
     
       <div>
         <h2>Juego Conecta 4</h2>
-        
+        <div className="button" onClick={() => {this.Board()}}>Nuevo juego</div>
+
         <table>
           <thead>
           </thead>

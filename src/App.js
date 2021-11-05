@@ -8,12 +8,15 @@ class App extends Component {
     this.state = {
       jugador1: 1,
       jugador2: 2,
-      tiroActual: null,
+      tiroActual: null, /** currentPlayer */
       board: []
     };
+
+    this.juega = this.juega.bind(this);
+
   } /** final del constructor */
 
-  Board() {
+  iniciarBoard() {
     // Creamos una matriz de 6x7 para el board
     let board = [];
 
@@ -30,17 +33,25 @@ class App extends Component {
     });
   }
 
+  /** togglePlayer */
   turnoJugador() {
     return (this.state.tiroActual === this.state.jugador1) ? this.state.jugador2 : this.state.jugador1;
-    {/* el estado del jugador en turno es el estado del tiro actual */}
+    /* el estado del jugador en turno es el estado del tiro actual */
   }
 
   juega(c){
-    this.setState({  tiroActual: this.turnoJugador() }); {/* seteamos el estado anterior en una nueva funcion */}
+    let board = this.state.board;
+      for (let r = 5; r >= 0; r--) {
+        if (!board[r][c]) {
+          board[r][c] = this.state.tiroActual;
+          break;
+        }
+      }
+    this.setState({  tiroActual: this.turnoJugador() }); /* seteamos el estado anterior en una nueva funcion */
   }
 
   componentWillMount() {
-    this.Board();
+    this.iniciarBoard();
   }
   
 
@@ -49,7 +60,7 @@ class App extends Component {
     
       <div>
         <h2>Juego Conecta 4</h2>
-        <div className="button" onClick={() => {this.Board()}}>Nuevo juego</div>
+        <div className="button" onClick={() => {this.iniciarBoard()}}>Nuevo juego</div>
 
         <table>
           <thead>

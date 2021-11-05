@@ -38,8 +38,6 @@ class App extends Component {
       tiroActual: this.state.jugador1,
       finJuego: false,
       mensaje: '',
-      score: 0,
-      score2: 0
     });
   }
 

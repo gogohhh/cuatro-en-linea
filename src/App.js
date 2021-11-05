@@ -67,7 +67,7 @@ class App extends Component {
           </thead>
           <tbody>
             {/* Recorremos el array row */}
-            {this.state.board.map((row, i) => (<Row key={i} row={row} index={this.index} />) )}
+            {this.state.board.map((row, i) => (<Row key={i} row={row} index={this.juega} />) )}
           </tbody>
         </table>
         

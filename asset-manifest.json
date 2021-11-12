@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/cuatro-en-linea/static/css/main.f61bd781.chunk.css",
+    "main.js": "/cuatro-en-linea/static/js/main.c96273ba.chunk.js",
+    "main.js.map": "/cuatro-en-linea/static/js/main.c96273ba.chunk.js.map",
+    "runtime-main.js": "/cuatro-en-linea/static/js/runtime-main.ed720afe.js",
+    "runtime-main.js.map": "/cuatro-en-linea/static/js/runtime-main.ed720afe.js.map",
+    "static/js/2.20d16334.chunk.js": "/cuatro-en-linea/static/js/2.20d16334.chunk.js",
+    "static/js/2.20d16334.chunk.js.map": "/cuatro-en-linea/static/js/2.20d16334.chunk.js.map",
+    "static/js/3.21b68de7.chunk.js": "/cuatro-en-linea/static/js/3.21b68de7.chunk.js",
+    "static/js/3.21b68de7.chunk.js.map": "/cuatro-en-linea/static/js/3.21b68de7.chunk.js.map",
+    "index.html": "/cuatro-en-linea/index.html",
+    "static/css/main.f61bd781.chunk.css.map": "/cuatro-en-linea/static/css/main.f61bd781.chunk.css.map",
+    "static/js/2.20d16334.chunk.js.LICENSE.txt": "/cuatro-en-linea/static/js/2.20d16334.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ed720afe.js",
+    "static/js/2.20d16334.chunk.js",
+    "static/css/main.f61bd781.chunk.css",
+    "static/js/main.c96273ba.chunk.js"
+  ]
+}

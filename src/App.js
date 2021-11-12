@@ -140,8 +140,8 @@ class App extends Component {
         <div className="button" onClick={() => {this.iniciarBoard()}}>Nuevo juego</div>
 
         <div className="score">
-          <p>Jugador 1: <span>{this.state.score}</span></p>
-          <p>Jugador 2: <span>{this.state.score2}</span></p>
+          <strong><p className="player1">Jugador 1: <span>{this.state.score}</span></p></strong>
+          <strong><p className="player2">Jugador 2: <span>{this.state.score2}</span></p></strong>
         </div>
 
         <table>

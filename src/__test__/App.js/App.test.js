@@ -11,5 +11,5 @@ test('Test de rendereado de contenido', ()=>{
     }
 
     const component = render(App);
-    console.log(component);
+    //console.log(component.container);
 });
